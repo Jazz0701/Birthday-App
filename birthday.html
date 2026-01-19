@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding -->
+  <meta charset="UTF-8">
+
+  <!-- Page title shown in browser tab -->
+  <title>Happy Birthday</title>
+
+  <!-- Link to external CSS file for styling -->
+  <link rel="stylesheet" href="birthday.css">
+</head>   <!-- ✅ FIXED: head is now properly closed -->
+
+<body>
+<!-- Home and logout buttons -->
+<div class="top-buttons">
+  <button class="home-btn" onclick="location.href='signup.html'">Home</button>
+  <button class="logout-btn" id="logoutBtn">Logout</button>
+</div>
+
+<!-- Container where confetti animation can appear -->
+<div id="confetti-container"></div>
+
+<!-- Main birthday card -->
+<div class="birthday-card">
+
+  <h1>Happy Birthday</h1>
+
+  <h2 id="userName"></h2>
+
+  <div class="quote-card">
+    <p id="quoteText"></p>
+    <p id="quoteAuthor"></p>
+  </div>
+
+  <div class="gift-gallery">
+    <gift-player 
+      src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif"
+      class="birthday-gif"
+      autoplay loop>
+    </gift-player>
+  </div>
+
+</div>
+
+<!-- Firebase core -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+<!-- Your Firebase config -->
+<script src="app.js"></script>
+
+<!-- Your page logic -->
+<script src="birthday.js"></script>
+
+</body>
+</html>

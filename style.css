@@ -1,0 +1,55 @@
+/* 1. THE BODY: This is the container that holds the card */
+body {
+    display: flex;           /* Turns on Flexbox layout */
+    justify-content: center; /* Centers the card horizontally (left to right) */
+    align-items: center;     /* Centers the card vertically (top to bottom) */
+    
+    /* VERY IMPORTANT: This tells the body to take up 100% of the screen height */
+    /* Without this, vertical centering won't work! */
+    height: 100vh;           
+    
+    margin: 0;               /* Removes default browser spacing */
+    background-color: #f4f7f6; /* Light gray page background */
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* 2. THE GREEN CARD: The box that holds our form */
+.green-card {
+    background-color: rgb(169, 197, 129); /* Deep forest green color */
+    color: white;             /* Makes all text inside white */
+    padding: 40px;            /* Adds space inside the box */
+    border-radius: 20px;      /* Rounds the corners */
+    width: 350px;             /* Sets a fixed width for the 'card' look */
+    text-align: center;       /* Centers all text/buttons inside the card */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+}
+
+/* 3. INPUTS: Making them look clean */
+input {
+    width: 100%;             /* Inputs stretch to fill the card */
+    padding: 12px;
+    margin: 10px 0;          /* Adds space above and below each box */
+    border-radius: 8px;      /* Slightly rounded input corners */
+    border: none;            /* Removes the default border */
+    box-sizing: border-box;  /* Ensures padding doesn't push width over 100% */
+}
+
+/* 4. BUTTONS: White buttons for high contrast */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color:rgb(77, 149, 212);
+    color: #1b4332;          /* Dark green text on the white button */
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;         /* Changes mouse to a hand icon on hover */
+    transition: 0.3s;        /* Smooth color change when hovering */
+}
+
+button:hover {
+    background-color: rgb(160, 195, 241); /* Turns light green when you hover over it */
+}
+
+a { color: #073b1e; text-decoration: none; }

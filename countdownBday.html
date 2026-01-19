@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page language and text type -->
+  <meta charset="UTF-8">
+
+  <!-- Title on browser tab -->
+  <title>Birthday Countdown</title>
+
+  <!-- Link to CSS file -->
+  <link rel="stylesheet" href="countdownBday.css">
+</head>
+
+<body>
+
+  <!-- Home button to go back and logout  start page -->
+  <div class="top-buttons">
+  <button id="homeBtn">Home</button>
+  <button id="logoutBtn">Logout</button>
+</div>
+
+
+  <!-- Main countdown card -->
+  <div class="countdown-card">
+
+    <!-- Page heading -->
+    <h2>🎂 Birthday Countdown</h2>
+
+    <!-- First row: shows months and days -->
+    <div class="countdown-box">
+
+      <!-- Months box -->
+      <div class="time-box">
+        <span id="months">0</span>     <!-- Months number -->
+        <small>Months</small>         <!-- Label -->
+      </div>
+
+      <!-- Days box -->
+      <div class="time-box">
+        <span id="days">0</span>       <!-- Days number -->
+        <small>Days</small>           <!-- Label -->
+      </div>
+    </div>
+
+
+    <!-- Message shown under countdown -->
+    <p id="countdownMessage">
+      ⏳ Counting down to your special day!
+    </p>
+
+  </div>
+  <!-- Firebase core -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+<!-- Firebase Database -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+<!-- Your Firebase config -->
+<script src="app.js"></script>
+
+  <!-- JavaScript file for countdown logic -->
+  <script src="countdownBday.js"></script>
+</body>
+</html>
