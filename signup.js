@@ -2,20 +2,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // Get all needed elements from page
-  const emailInput = document.getElementById("loginEmail");
-  const passwordInput = document.getElementById("loginPassword");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
   const loginBtn = document.getElementById("loginSubmit");
-  const homeBtn = document.getElementById("homeBtn");
+  const homeBtn = document.getElementById("signup-btn");
   const goToSignup = document.getElementById("goToSignup");
 
   // Go to home/signup page when home button is clicked
   homeBtn.addEventListener("click", () => {
-    window.location.href = "signup.html";
+    window.location.href = "login.html";
   });
 
-  // Go to signup page when "Sign Up" is clicked
+  // Go to login page when "Sign Up" is clicked
   goToSignup.addEventListener("click", () => {
-    window.location.href = "signup.html";
+    window.location.href = "login.html";
   });
 
   // When login button is clicked
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("userDOB", user.dob);
           localStorage.setItem("userEmail", user.email);
 
-          alert("Login Successful");
+          alert("Logged in Successfully");
 
           // Check birthday
           if (isBirthdayToday(user.dob)) {

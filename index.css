@@ -1,6 +1,4 @@
-/* ============================================================
-   PAGE LAYOUT
-============================================================ */
+
 body {
   margin: 0;
   height: 100vh;
@@ -11,13 +9,10 @@ body {
   background-color: #f4f4f4; /* optional: nicer background */
 }
 
-/* ============================================================
-   MAIN CARD
-============================================================ */
 .card {
-  background-color: rgb(69, 103, 238); /* blue card */
-  width: 320px;
-  padding: 20px;
+  background-color: rgb(220, 231, 125); /* blue card */
+  width: 450px;
+  padding: 30px;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -26,12 +21,12 @@ body {
 /* Heading */
 .card h2 {
   margin-bottom: 10px;
-  color: white; /* better contrast */
+  color: rgb(201, 117, 8); /* better contrast */
 }
 
 /* Normal text */
 .card p {
-  color: #f0f0f0;
+  color: black;
   margin-bottom: 12px;
 }
 
@@ -41,9 +36,6 @@ body {
   color: #e0e0e0;
 }
 
-/* ============================================================
-   BUTTONS
-============================================================ */
 button {
   width: 100%;
   padding: 10px;

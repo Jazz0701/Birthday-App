@@ -2,7 +2,7 @@
 body {
   margin: 0;                     /* Remove page space */
   height: 100vh;                 /* Full screen height */
-  background: linear-gradient(135deg, #57dae3, #50e6cd);
+  background: linear-gradient(135deg, #e39d57, #b3ec6d);
   display: flex;                 /* Use flex */
   justify-content: center;       /* Center left-right */
   align-items: center;           /* Center up-down */
@@ -37,7 +37,7 @@ body {
 
 /* Each time box */
 .time-box {
-  background: #7b2cbf;
+  background: #be90e6;
   color: white;
   padding: 12px;
   border-radius: 12px;
@@ -74,8 +74,9 @@ body {
 
 .top-buttons {
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 10px;
   z-index: 10;
@@ -85,7 +86,7 @@ body {
 #homeBtn {
   background: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 20px;
   padding: 8px 10px;
   font-size: 16px;
   cursor: pointer;
@@ -94,14 +95,13 @@ body {
 
 /* Logout button */
 #logoutBtn {
-  background: #ff4d4d;
-  color: white;
+  background: white;
   border: none;
   border-radius: 20px;
-  padding: 8px 14px;
-  font-size: 14px;
+  padding: 8px 10px;
+  font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
 #homeBtn:hover, #logoutBtn:hover {

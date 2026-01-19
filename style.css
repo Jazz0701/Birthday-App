@@ -52,4 +52,11 @@ button:hover {
     background-color: rgb(160, 195, 241); /* Turns light green when you hover over it */
 }
 
-a { color: #073b1e; text-decoration: none; }
+a { color: #073b1e; 
+    text-decoration: none;
+ }
+
+#goToSignup {
+    color: #073b1e;
+    text-decoration: none;
+}

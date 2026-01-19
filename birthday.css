@@ -1,47 +1,57 @@
-/* ============================================================
-   BIRTHDAY PAGE — PURPLE THEME
-============================================================ */
 
 body {
-  background: #f4f4f4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  font-family: "Poppins", sans-serif;
+  margin: 0;                     /* Remove page space */
+  height: 100vh;                 /* Full screen height */
+  background: linear-gradient(135deg, #e0b487, #b3ec6d);
+  display: flex;                 /* Use flex */
+  justify-content: center;       /* Center left-right */
+  align-items: center;           /* Center up-down */
+  font-family: Arial, sans-serif;
 }
 
 /* Home + Logout buttons */
 .top-buttons {
-  width: 350px;
+  position: fixed;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
+  gap: 10px;
+  z-index: 10;
 }
 
-.home-btn {
-  background: #0077cc;
-  color: white;
-  padding: 8px 14px;
+/* Home button */
+#homeBtn {
+  background: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;
+  padding: 8px 10px;
+  font-size: 16px;
   cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
-.logout-btn {
-  background: #cc0000;
-  color: white;
-  padding: 8px 14px;
+/* Logout button */
+#logoutBtn {
+  background: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 20px;
+  padding: 8px 10px;
+  font-size: 16px;
   cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
 }
+
+#homeBtn:hover, #logoutBtn:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+}
+
 
 /* Main birthday card */
 .birthday-card {
   width: 350px;
-  padding: 25px;
-  background: #eef1ff;              /* Soft lavender */
+  padding: 20px;
+  background: white;              /* Soft lavender */
   border-left: 6px solid #5a5ee6;   /* Purple accent */
   border-radius: 12px;
   text-align: center;
@@ -53,19 +63,14 @@ body {
   margin-bottom: 10px;
 }
 
+.birthday-card h2 {
+  color: #ee6b13;
+  margin-bottom: 15px;
+}
 .quote-card {
-  background: white;
+  background: rgb(239, 198, 103);
   padding: 15px;
   border-radius: 10px;
   margin-top: 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.gift-gallery {
-  margin-top: 20px;
-}
-
-.birthday-gif {
-  width: 100%;
-  border-radius: 10px;
 }

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Time calculations
-
+   
     const totalDays = Math.floor(totalHours / 24);
     const months = Math.floor(totalDays / 30);
     const days = totalDays % 30;
@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show on page
     document.getElementById("months").innerText = months;
     document.getElementById("days").innerText = days;
+  
 
     document.getElementById("countdownMessage").innerText =
       "⏳ Counting down to your special day!";
