@@ -1,88 +1,55 @@
-// Run when page is loaded
+// Run this code only after the page has fully loaded
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Get all needed elements from page
+  // Get all input fields and buttons from the signup page
+  const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
-  const loginBtn = document.getElementById("loginSubmit");
-  const homeBtn = document.getElementById("signup-btn");
-  const goToSignup = document.getElementById("goToSignup");
+  const dobInput = document.getElementById("dob");
+  const signupBtn = document.getElementById("signupSubmit");
+  const goToLogin = document.getElementById("goToLogin");
 
-  // Go to home/signup page when home button is clicked
-  homeBtn.addEventListener("click", () => {
-    window.location.href = "login.html";
+  // When user clicks "Already have an account? Login"
+  goToLogin.addEventListener("click", () => {
+    window.location.href = "login.html";   // Redirect to login page
   });
 
-  // Go to login page when "Sign Up" is clicked
-  goToSignup.addEventListener("click", () => {
-    window.location.href = "login.html";
-  });
-
-  // When login button is clicked
-  loginBtn.addEventListener("click", () => {
-
-    // Get values entered by user
+  // When the Sign Up button is clicked
+  signupBtn.addEventListener("click", () => {
+       
+    // Read values from the input fields
+    const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
+    const dob = dobInput.value.trim();
 
-    // Check if fields are empty
-    if (!email || !password) {
-      alert("Please enter email and password");
+    // Make sure all fields are filled
+    if (!name || !email || !password || !dob) {
+      alert("Please fill all fields");
       return;
     }
 
-    // Read all users from database
-    firebase.database().ref("birthdayUsers").once("value", (snapshot) => {
+    // Create a new user in Firebase Authentication
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
 
-      // If no users in database
-      if (!snapshot.exists()) {
-        alert("No users found");
-        return;
-      }
+        // Firebase gives each user a unique ID (UID)
+        const uid = userCredential.user.uid;
+        
+          // Redirect user to login page
+        window.location.href = "login.html"
 
-      let found = false;
-
-      // Check each user
-      snapshot.forEach((child) => {
-        const user = child.val();
-
-        // Match email and password
-        if (user.email === email && user.password === password) {
-          found = true;
-
-          // Save user info in browser
-          localStorage.setItem("userName", user.name);
-          localStorage.setItem("userDOB", user.dob);
-          localStorage.setItem("userEmail", user.email);
-
-          alert("Logged in Successfully");
-
-          // Check birthday
-          if (isBirthdayToday(user.dob)) {
-            window.location.href = "birthday.html";
-          } else {
-            window.location.href = "countdownBday.html";
-          }
-        }
+      })
+      .catch((error) => {
+        // Show any Firebase errors (email already used, weak password, etc.)
+        alert(error.message);
       });
 
-      // If no match found
-      if (!found) {
-        alert("Wrong Email or Password");
-      }
-    });
+       // Save extra user details in Realtime Database
+        firebase.database().ref("birthdayUsers/").push().set({
+         name: name,
+          email: email,
+          dob: dob
+        });
   });
-
 });
-
-// Function to check if today is birthday
-function isBirthdayToday(dob) {
-  if (!dob) return false;
-
-  const parts = dob.split("-");
-  const month = Number(parts[1]);
-  const day = Number(parts[2]);
-  const today = new Date();
-
-  return month === today.getMonth() + 1 && day === today.getDate();
-}

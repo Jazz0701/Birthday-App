@@ -10,7 +10,7 @@ body {
 }
 
 .card {
-  background-color: rgb(220, 231, 125); /* blue card */
+  background-color: rgb(216, 194, 227); /* blue card */
   width: 450px;
   padding: 30px;
   border-radius: 8px;
@@ -21,7 +21,7 @@ body {
 /* Heading */
 .card h2 {
   margin-bottom: 10px;
-  color: rgb(201, 117, 8); /* better contrast */
+  color: rgb(92, 14, 169); /* better contrast */
 }
 
 /* Normal text */
@@ -42,7 +42,7 @@ button {
   margin-top: 8px;
   border: none;
   border-radius: 5px;
-  background: blue;
+  background: rgb(80, 80, 216);
   color: white;
   cursor: pointer;
   font-size: 15px;

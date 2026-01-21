@@ -58,14 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Time calculations
-   
+    const totalSeconds = Math.floor(diff / 1000);
+    const seconds = totalSeconds % 60;
+
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const minutes = totalMinutes % 60;
+
+    const totalHours = Math.floor(totalMinutes / 60);
+    const hours = totalHours % 24;
+
     const totalDays = Math.floor(totalHours / 24);
     const months = Math.floor(totalDays / 30);
     const days = totalDays % 30;
-
+    
     // Show on page
-    document.getElementById("months").innerText = months;
-    document.getElementById("days").innerText = days;
+    document.getElementById("months").innerText = months;   // birthmonth  
+    document.getElementById("days").innerText = days;       // birthday
   
 
     document.getElementById("countdownMessage").innerText =

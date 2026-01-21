@@ -1,61 +1,84 @@
+// Run when the page finishes loading
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Get all input fields and buttons
   const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
   const loginBtn = document.getElementById("loginSubmit");
   const goToSignup = document.getElementById("goToSignup");
 
-  // Go to signup page
+  // When user clicks "Not registered? Sign Up"
   goToSignup.addEventListener("click", () => {
     window.location.href = "signup.html";
   });
 
-  // Handle login
+  // When login button is clicked
   loginBtn.addEventListener("click", () => {
+
+    // Read values from inputs
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
+    // Make sure both fields are filled
     if (!email || !password) {
       alert("Please enter email and password");
       return;
     }
 
-    firebase.database().ref("birthdayUsers").once("value", (snapshot) => {
-      if (!snapshot.exists()) {
-        alert("No users found");
-        return;
-      }
+    // Log in using Firebase Authentication
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
 
-      let found = false;
+        // Get the logged-in user's UID
+        const uid = userCredential.user.uid;
+        console.log(uid)
 
-      snapshot.forEach((child) => {
-        const user = child.val();
+        // const db = firebase.database().ref("birthdayUsers/" + uid).once("value");
+        // console.log(db)
 
-        if (user.email === email && user.password === password) {
-          found = true;
+        // Fetch the user's profile from Realtime Database
+        return firebase.database().ref("birthdayUsers/" + uid).once("value");
+         
+      })
+      .then((snapshot) => {
 
-          localStorage.setItem("userName", user.name);
-          localStorage.setItem("userDOB", user.dob);
-          localStorage.setItem("userEmail", user.email);
 
-          // Redirect immediately
-          if (isBirthdayToday(user.dob)) {
-            window.location.href = "birthday.html";
-          } else {
-            window.location.href = "countdownBday.html";
-          }
+        // Extract user data
+        const user = snapshot.val();
+        console.log(user)
+
+        if (!user){
+          alert("User profile not found in database");
+          return;
         }
-      });
 
-      if (!found) {
-        alert("Wrong Email or Password");
-      }
-    });
+        // Save user info in localStorage for other pages
+        localStorage.setItem("userName", user.name);
+        localStorage.setItem("userDOB", user.dob);
+        localStorage.setItem("userEmail", user.email);
+
+        alert("Login Successful");
+
+        // Redirect based on birthday check
+        if (isBirthdayToday(user.dob)) {
+          window.location.href = "birthday.html";
+        } else {
+          window.location.href = "countdownBday.html";
+        }
+      })
+      .catch((error) => {
+        // Show Firebase Auth errors (wrong password, no user, etc.)
+        alert(error.message);
+      });
   });
 });
 
+// Function to check if today matches the user's birthday
 function isBirthdayToday(dob) {
-  if (!dob) return false;
-  const [year, month, day] = dob.split("-").map(Number);
+  const parts = dob.split("-");
+  const month = Number(parts[1]);
+  const day = Number(parts[2]);
   const today = new Date();
+
   return month === today.getMonth() + 1 && day === today.getDate();
 }

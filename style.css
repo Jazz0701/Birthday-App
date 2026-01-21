@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(160, 195, 241); /* Turns light green when you hover over it */
+    background-color: rgb(17, 100, 208); /* Turns light green when you hover over it */
 }
 
 a { color: #073b1e; 
