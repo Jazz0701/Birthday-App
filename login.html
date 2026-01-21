@@ -1,53 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login - Birthday App</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Login - Birthday App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
- <!-- Body with special class for center layout -->
- <body class="auth-body">
+<body class="auth-body">
 
-  <!-- Home button to go back to start page
-  <button id="homeBtn">Home</button> -->
-
-  <!-- Main card for sign in form -->
   <div class="green-card">
+    <h2>Log In</h2>
 
-    <!-- Page heading -->
-    <h2>Log in</h2>
-
-    <!-- Input for user email -->
     <input type="email" id="email" placeholder="Email" required>
-
-    <!-- Input for user password -->
     <input type="password" id="password" placeholder="Password" required>
 
-    <!-- Button to submit login -->
-    <button id="loginSubmit" class="primary-btn">Login In</button>
+    <button id="loginSubmit" class="primary-btn">Log In</button>
 
-    <!-- Text for users who are new -->
     <p class="switch-text">
       Not registered?
-      <!-- Click to go to Sign Up page -->
-      <span id="goToSignup" href = "signup.html">Sign Up</span>
+      <span id="goToSignup">Sign Up</span>
     </p>
   </div>
 
-  <!-- Firebase main library -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-
-  <!-- Firebase authentication library -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-
-  <!-- Firebase database library -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-
-  <!-- Your Firebase settings file -->
   <script src="app.js"></script>
-
-  <!-- Your sign in logic file -->
   <script src="login.js"></script>
 
 </body>

@@ -1,24 +1,22 @@
-// Run when page is ready
 document.addEventListener("DOMContentLoaded", () => {
 
   // Show user name
-  const userName = localStorage.getItem("userName");
-  document.getElementById("userName").innerText = userName || "Guest";
+  const userName = localStorage.getItem("userName") || "Friend";
+  document.getElementById("userName").innerText = userName;
 
-  // Get random birthday quote
+  // Get quote only from API
   fetch("https://corsproxy.io/?https://type.fit/api/quotes")
     .then(res => res.json())
     .then(data => {
       const randomIndex = Math.floor(Math.random() * data.length);
       const quote = data[randomIndex];
-
       document.getElementById("quoteText").innerText = `"${quote.text}"`;
       document.getElementById("quoteAuthor").innerText =
         quote.author ? `— ${quote.author}` : "— Unknown";
     })
     .catch(() => {
       document.getElementById("quoteText").innerText =
-        "Wishing you a very Happy Birthday!";
+        "Happy Birthday! Wishing you a wonderful day!";
       document.getElementById("quoteAuthor").innerText = "";
     });
 
@@ -28,41 +26,35 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "signup.html";
   });
 
-  // Logout button (Firebase signout)
+  // Logout button (Firebase + local)
   const logoutBtn = document.getElementById("logoutBtn");
   logoutBtn.addEventListener("click", () => {
 
     firebase.auth().signOut()
       .then(() => {
-
-        // Clear saved user info
-        localStorage.removeItem("userName");
-        localStorage.removeItem("userDOB");
-        localStorage.removeItem("userEmail");
-
+        localStorage.clear();
         alert("You are logged out");
-
-        // Go to signup page
         window.location.href = "signup.html";
-
       })
       .catch(() => {
-        alert("Logout failed");
+        localStorage.clear();
+        window.location.href = "signup.html";
       });
 
   });
 
+  // Start confetti
+  createConfetti();
 });
 
-// Confetti effect
+// Simple confetti
 function createConfetti() {
   const container = document.getElementById("confetti-container");
   const colors = ["red", "yellow", "blue", "green", "pink", "orange"];
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 40; i++) {
     const confetti = document.createElement("div");
     confetti.className = "confetti";
-
     confetti.style.left = Math.random() * 100 + "vw";
     confetti.style.backgroundColor =
       colors[Math.floor(Math.random() * colors.length)];
@@ -72,6 +64,3 @@ function createConfetti() {
     setTimeout(() => confetti.remove(), 5000);
   }
 }
-
-// Start confetti
-createConfetti();
